@@ -50,16 +50,49 @@ class App(customtkinter.CTk):
         self.btn_dividir.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_sumar_on_click(self):
-        pass
+         operadorA = int(self.txt_operador_a.get()) ;
+         operadorB = int(self.txt_operador_b.get()) ;
+         
+         suma_operadores = operadorA + operadorB;
+         if suma_operadores > 0:
+            alert("result",suma_operadores);
+         else:
+            alert("error","los numeros tienen que ser positivos")   ; 
+     
 
     def btn_restar_on_click(self):
-        pass
+          operadorA = int(self.txt_operador_a.get()) ;
+          operadorB = int(self.txt_operador_b.get()) ;
+          
+          resta_operadores = operadorA - operadorB;
+          
+          if resta_operadores >= 0:
+               alert("result",resta_operadores);
+          else:
+               alert("error","los numeros tienen que ser positivos")   ; 
 
     def btn_multiplicar_on_click(self):
-        pass
+         operadorA = int(self.txt_operador_a.get()) ;
+         operadorB = int(self.txt_operador_b.get()) ;
+          
+         multiplicacion_operadores = operadorA * operadorB;
+          
+         if multiplicacion_operadores >= 0:
+               alert("result",multiplicacion_operadores);
+         else:
+               alert("error","los numeros tienen que ser positivos")   ; 
+
 
     def btn_dividir_on_click(self):
-        pass
+         operadorA = float(self.txt_operador_a.get()) ;
+         operadorB = float(self.txt_operador_b.get()) ;
+          
+         dividir_operadores = operadorA / operadorB;
+          
+         if dividir_operadores >= 0:
+               alert("result",dividir_operadores);
+         else:
+               alert("error","los numeros tienen que ser positivos")   ; 
         
 if __name__ == "__main__":
     app = App()

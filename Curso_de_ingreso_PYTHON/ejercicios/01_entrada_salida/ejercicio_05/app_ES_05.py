@@ -41,7 +41,16 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        name = self.txt_nombre.get();
+        age = self.txt_edad.get();
+        
+        ## forma 1
+        # infoConcatenado= f"usted se llama {name} y su edad es de {age} años";
+        
+        
+        infoConcatenado = "usted se llama {0} y su edad es de {1} años".format(name,age);
+        
+        alert("info", infoConcatenado);
 
 
         

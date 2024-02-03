@@ -41,7 +41,15 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+         operadorA = int(self.txt_operador_a.get()) ;
+         operadorB = int(self.txt_operador_b.get()) ;
+         
+         modulo_operadores = operadorA % operadorB;
+         if modulo_operadores > 0:
+            alert("result",modulo_operadores);
+         else:
+            alert("error","los numeros tienen que ser positivos")   ; 
+     
         
         
     

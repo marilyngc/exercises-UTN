@@ -34,7 +34,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+          name = prompt("Ingrese su nombre", "Nombre")
+
+        # Check if the user clicked Cancel in the prompt
+          if name is not None:
+            # Clear the current content of the entry and insert the new name
+            self.txt_nombre.delete(0, tkinter.END)
+            self.txt_nombre.insert(0, name)
+       
         
     
 if __name__ == "__main__":
