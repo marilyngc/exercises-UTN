@@ -8,11 +8,11 @@ import customtkinter
 nombre: Marilyn
 apellido: Celis
 ---
-Ejercicio: entrada_salida_10
+Ejercicio: entrada_salida_10bis
 ---
 Enunciado:
-Al presionar el botón  'Calcular', se deberá obtener el valor contenido en la caja de texto (txt_importe), 
-transformarlo a número y mostrar el importe actualizado con un descuento del 20% utilizando el Dialog Alert.
+Al presionar el botón  'Calcular', se deberán obtener los valores contenidos en las cajas de texto (txt_importe y txt_descuento), 
+transformarlos en números y mostrar el importe actualizado con el descuento utilizando el Dialog Alert.
 '''
 
 
@@ -29,15 +29,22 @@ class App(customtkinter.CTk):
         self.txt_importe = customtkinter.CTkEntry(master=self)
         self.txt_importe.grid(row=0, column=1)
 
+        self.label2 = customtkinter.CTkLabel(
+            master=self, text="% de Descuento")
+        self.label2.grid(row=1, column=0, padx=20, pady=10)
+
+        self.txt_descuento = customtkinter.CTkEntry(master=self)
+        self.txt_descuento.grid(row=1, column=1)
+
         self.btn_mostrar = customtkinter.CTkButton(
             master=self, text="Mostrar", command=self.btn_mostrar_on_click)
-        self.btn_mostrar.grid(row=2, pady=20, padx=30, columnspan=2, sticky="nsew")
+        self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
         sueldo = float(self.txt_sueldo.get());
+        sueldo_descuento = float(self.txt_descuento.get());
         
-        
-        operacion_sueldo = (sueldo * 20) / 100;
+        operacion_sueldo = (sueldo * sueldo_descuento) / 100;
         sueldo_actualizado = sueldo - operacion_sueldo;
         
         alert("sueldo actualizado", sueldo_actualizado);
