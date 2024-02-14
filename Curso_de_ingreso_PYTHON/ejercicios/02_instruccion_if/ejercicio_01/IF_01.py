@@ -37,8 +37,7 @@ class App(customtkinter.CTk):
         edad = float(self.txt_edad.get());
         if edad == 18:
             alert(title="result",message=f"usted tiene {edad} años");
-        else:
-            alert(title="error",message=f"usted no tiene 18 años de edad");
+       
         
         
     

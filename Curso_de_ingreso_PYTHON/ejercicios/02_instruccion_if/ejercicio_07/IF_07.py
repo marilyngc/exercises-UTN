@@ -43,15 +43,20 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        valor_txt_edad = int(self.txt_edad.get()) ;
+        valor_txt_edad = self.txt_edad.get() ;
+        valor_txt_edad = int(valor_txt_edad);
         valor_combobox_tipo = self.combobox_tipo.get();
         
-        if valor_combobox_tipo == "NATIVO" and valor_txt_edad >= 16:
-            alert("mensaje",f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, puede votar");
-        elif valor_combobox_tipo == "NATURALIZADO" and valor_txt_edad >= 18:
-             alert("mensaje",f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, puede votar");
+
+        if valor_combobox_tipo == "NATIVO" and valor_txt_edad > 15:
+            mensaje = f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, puede votar";
+        elif valor_combobox_tipo == "NATURALIZADO" and valor_txt_edad > 17:
+            mensaje = f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, puede votar";
         else:
-             alert("mensaje",f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, tiene que cumplir con los requisitos de edad");
+            mensaje = f"usted es {valor_combobox_tipo} y tiene {valor_txt_edad}, tiene que cumplir con los requisitos de edad";
+            
+        alert("información", mensaje);    
+             
                  
             
         

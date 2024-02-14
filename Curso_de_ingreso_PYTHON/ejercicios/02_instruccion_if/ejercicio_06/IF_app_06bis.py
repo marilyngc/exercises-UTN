@@ -5,14 +5,15 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: marilyn
+apellido: celis
 ---
 Ejercicio: if_06bis
 ---
 Enunciado:
 
-A partir del ingreso de la altura en centímetros de un jugador de baloncesto, el programa deberá determinar la posición del jugador en la cancha, considerando los siguientes parametros:
+A partir del ingreso de la altura en centímetros de un jugador de baloncesto, el programa deberá determinar la posición del jugador en la cancha, 
+considerando los siguientes parametros:
 
 Menos de 160 cm: Base
 Entre 160 cm y 179 cm: Escolta
@@ -39,7 +40,22 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        altura_ingresada = self.txt_altura.get();
+        altura_ingresada = float(altura_ingresada);
+        
+        if altura_ingresada < 159:
+            mensaje = "Posicion en base";
+        elif altura_ingresada > 159 and altura_ingresada < 180:
+            mensaje = "Posicion en Escolta";
+        elif altura_ingresada > 179 and altura_ingresada < 200:
+             mensaje = "Posicion en Alero";
+        else:
+            mensaje = "Posicion en Ala-Pívot o Pívot";
+            
+        alert("posicion del jugador",mensaje);    
+                 
+            
+            
 
         
         
