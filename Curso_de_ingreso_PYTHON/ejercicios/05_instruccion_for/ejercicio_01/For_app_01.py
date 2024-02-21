@@ -23,7 +23,9 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass 
+        
+        for contador in range(6):
+            alert("resultado",contador)
        
             
 

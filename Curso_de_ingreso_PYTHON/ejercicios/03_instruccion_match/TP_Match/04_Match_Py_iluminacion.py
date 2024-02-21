@@ -5,10 +5,10 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre: MARILYN
-apellido: CELIS
+nombre:
+apellido:
 ---
-TP: IF_Iluminacion
+TP: Iluminación
 ---
 Enunciado:
 Todas las lámparas están  al mismo precio de $800 pesos final.
@@ -43,69 +43,7 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        marca_ingresada = self.combobox_marca.get();
-        cantidad_ingresada = self.combobox_cantidad.get();
-        cantidad_ingresada = int(cantidad_ingresada);
-        precio_lamparas = 800;
-        precio_total_sin_descuento = precio_lamparas * cantidad_ingresada;
-        descuento = 1;
-       
-        # A
-        if cantidad_ingresada > 5 :
-           descuento = 50;
-        # B
-        elif cantidad_ingresada == 5 :
-             if marca_ingresada == "ArgentinaLuz":
-                descuento = 40;
-             else:
-                 descuento = 30;
-        #C
-        elif cantidad_ingresada == 4 :
-            if marca_ingresada == "ArgentinaLuz" or marca_ingresada == "FelipeLamparas":
-                 descuento = 25;
-            else:
-                descuento = 20;    
-        #D        
-        elif  cantidad_ingresada == 3 :
-            if marca_ingresada ==  "ArgentinaLuz":
-               descuento = 15;  
-            elif marca_ingresada ==  "FelipeLamparas":
-                 descuento = 10;
-            else:
-                 descuento = 5;   
-        else:
-            descuento = 0;         
-                 
-       
-        descuento_a_aplicar = (precio_total_sin_descuento * descuento) / 100;
-        descuento_aplicado = precio_total_sin_descuento - descuento_a_aplicar;
-       
-        print("monto", precio_total_sin_descuento);
-        print("descuento a aplicar", descuento_a_aplicar);
-        print(descuento_aplicado);
-        
-        #E
-        if descuento_aplicado > 3999:
-             importe_final = (descuento_aplicado * 5) / 100;    
-             descuento_aplicado = descuento_aplicado - importe_final;
-             
-        mensaje = f"El precio total de sus lamparas es: {descuento_aplicado}"        
-        alert("Lamparas",mensaje);       
-             
-                    
-            
-             
-                    
-            
-        
-             
-            
-            
-            
-           
-            
-            
-            
+        pass
         
     
 if __name__ == "__main__":

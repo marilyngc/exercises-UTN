@@ -6,6 +6,9 @@ import customtkinter
 
 
 '''
+nombre: Marilyn
+apellido: Celis
+---
 Una agencia de viajes cobra $15.000 por cada estadía como base. 
 Luego para calcular las tarifas total realiza el siguiente cálculo, 
 en función de la estación del año y del destino elegido:
@@ -52,8 +55,59 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        estacion_seleccionada = self.combobox_estaciones.get();
+        destino_seleccionada = self.combobox_destino.get();
+        
+        porcentaje_descuento: 0;
+        porcentaje_con_aumento = 0;
+        precio_bruto = 15000;
+        
+       
+        
+        match estacion_seleccionada:
+            case "Invierno":
+                match destino_seleccionada:
+                    case "Bariloche":
+                        porcentaje_con_aumento = 20;
+                    case "Cataratas" | "Cordoba":
+                        porcentaje_descuento = 10;
+                    case _:
+                        porcentaje_descuento = 20;              
+            case "Verano":
+                match destino_seleccionada:
+                    case "Bariloche":
+                        porcentaje_descuento = 20;
+                    case "Cataratas" | "Cordoba":
+                        porcentaje_con_aumento = 10;
+                    case _:
+                        porcentaje_con_aumento = 20;
+                                
+            case "Primavera" | "Otoño":
+                match destino_seleccionada:
+                    case "Bariloche" |  "Cataratas" | "Mar del plata":
+                        porcentaje_con_aumento = 10;
+                    case _:
+                        porcentaje_descuento = 1;
+                                
+           
+                                    
+       
+        
+        
+        if  porcentaje_con_aumento > 0:
+            # calculo del aumento
+            calculo_aumento = (precio_bruto * porcentaje_con_aumento) / 100;
+            precio_con_aumento = precio_bruto + calculo_aumento;  
             
+        
+            alert("resultado",f"Con aumento: {precio_con_aumento}");
+        else:
+             #calculo del decuento
+            calculo_descuento = (precio_bruto * porcentaje_descuento) / 100;
+            precio_con_descuento = precio_bruto - calculo_descuento; 
+        
+            alert("resultado", f"con descuento: {precio_con_descuento}");
+                
     
 if __name__ == "__main__":
     app = App()

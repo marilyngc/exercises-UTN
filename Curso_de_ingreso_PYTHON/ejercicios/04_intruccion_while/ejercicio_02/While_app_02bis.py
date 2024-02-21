@@ -9,9 +9,11 @@ import customtkinter
 nombre: Marilyn
 apellido: Celis
 ---
+Ejercicio: while_02bis
+---
 Enunciado:
-Al presionar el botón ‘Mostrar Iteración’, mostrar mediante alert 
-10 repeticiones con números DESCENDENTE desde el 1 al 10
+Al presionar el botón ‘Mostrar Iteración’, mostrar mediante alert la suma 
+de los numeros pares comprendidos entre el 1 y el 10.
 '''
 
 
@@ -27,13 +29,20 @@ class App(customtkinter.CTk):
         
     
     def btn_mostrar_iteracion_on_click(self):
-        contador = 10;
-        while contador > 0:
-            print(contador);
-            contador -= 1;
+        contador = 0;
+        suma_pares = 0;
+        while contador < 10:
+            contador +=1;
+            if contador % 2 == 0:       
+                suma_pares += contador;
+                print(suma_pares);
+               
+                
+
         
-        print(f"contador final: {contador}")    
-           
+            
+            
+            
         
     
     

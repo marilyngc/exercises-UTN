@@ -6,6 +6,9 @@ import customtkinter
 
 
 '''
+nombre: Marilyn
+apellido: Celis
+---
 Enunciado:
 Al presionar el botón ‘Validar letra’, mediante prompt solicitar al usuario que ingrese una letra. 
 Se deberá validar que la letra sea ‘U’, ‘T’ o ‘N’ (en mayusculas) 
@@ -25,7 +28,13 @@ class App(customtkinter.CTk):
         
     
     def btn_validar_letra_on_click(self):
-        pass
+        letra_ingresada = prompt("letra","ingrese una letra en mayuscula")
+        
+        while letra_ingresada not in ["U" ,"T" , "N"]:
+            alert("error","Vuelva introducir el numero");
+            letra_ingresada = prompt("letra","ingrese una letra en mayuscula");
+        alert("Correcto!",letra_ingresada);    
+            
             
     
 if __name__ == "__main__":

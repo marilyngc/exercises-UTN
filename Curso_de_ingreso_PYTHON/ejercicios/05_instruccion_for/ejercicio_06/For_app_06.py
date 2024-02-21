@@ -22,7 +22,19 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        numero_ingresado = prompt("numero","ingrese un numero");
+        numero_ingresado = int(numero_ingresado);
+        
+        cantidad_pares = 0;
+        
+        for i in range(1,numero_ingresado + 1):
+           
+            if i % 2 == 0:
+                
+                print("pares encontrados",i);
+                cantidad_pares += 1;
+            else:
+                print("valor ingresado",f"valor ingresdo es: {i}");    
         
     
 if __name__ == "__main__":
