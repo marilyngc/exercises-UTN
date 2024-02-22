@@ -5,6 +5,9 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: Marilyn
+apellido: Celis
+---
 Al presionar el botón Mostrar pedir un número. Informar si el número es PRIMO o no.
 '''
 
@@ -27,14 +30,18 @@ class App(customtkinter.CTk):
         
         for i in range(2,numero_ingresado + 1):
             
-            if i % numero_ingresado == 0  :
-                
-                print("primos encontrados",i);
-                numeros_primos += 1 
-                    
-            else:
-                print("valor ingresado",f"No primos encontrados: {i}");    
+            if numero_ingresado % i != 0  :
+                break
             
+            print("divisores encontrados",i);
+            numeros_primos += 1 
+                    
+        if numero_ingresado == i:
+            print("primos encontrados",i);
+                        
+        else:
+            print("valor ingresado",f"No primos encontrados: {i}");    
+        
             
                         
                     
