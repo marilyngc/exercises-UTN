@@ -26,7 +26,7 @@ import warnings
 #? El profesor OAK de pueblo paleta quiere que construyas un segundo modelo prototipico 
 #? de pokedex con 10 pokemones de prueba.
 '''
-NOMBRE = '' # Completa tu nombre completo solo en esa variable
+NOMBRE = 'Marilyn Celis Gutierrez' # Completa tu nombre completo solo en esa variable
 '''
 #?################ ENUNCIADO #################
 Para ello deberas programar el boton "Cargar Pokedex" para poder cargar 10 pokemones.
@@ -71,9 +71,9 @@ class App(customtkinter.CTk):
         self.label_title = customtkinter.CTkLabel(master=self, text=f"Pokedex de {NOMBRE}", font=("Arial", 20, "bold"))
         self.label_title.grid(row=0, column=0, columnspan=2, padx=20, pady=10)
         
-        self.image = tk.PhotoImage(file='./modelos_examenes/pokedex_v2/UTN_Pokedex_App_v2.png')
-        self.top_banner = customtkinter.CTkLabel(master = self, image = self.image, text = '')
-        self.top_banner.grid_configure(row = 1, column = 0, padx = 20, pady = 5, columnspan = 2, rowspan = 1, sticky = 'we')
+        # self.image = tk.PhotoImage(file='./modelos_examenes/pokedex_v2/UTN_Pokedex_App_v2.png')
+        # self.top_banner = customtkinter.CTkLabel(master = self, image = self.image, text = '')
+        # self.top_banner.grid_configure(row = 1, column = 0, padx = 20, pady = 5, columnspan = 2, rowspan = 1, sticky = 'we')
 
         self.btn_cargar = customtkinter.CTkButton(master=self, text="Cargar Pokedex", command=self.btn_cargar_pokedex_on_click)
         self.btn_cargar.grid(row=2, pady=10, columnspan=2, sticky="nsew")
@@ -103,7 +103,22 @@ class App(customtkinter.CTk):
 
 
     def btn_cargar_pokedex_on_click(self):
-        pass
+        for i in range(10):
+            nombre_ingresado = prompt("nombre","ingrese nombre de pokemon");
+            color_ingresada = prompt("color","ingrese color del pokemon");
+            
+            altura_ingresada = prompt("altura","altura ingresada");
+            altura_ingresada = int(altura_ingresada);
+            
+            while altura_ingresada < 10 or altura_ingresada > 200:
+                alert("error","la altura tiene que ser mayor a 10 y menor a 200");
+                altura_ingresada = prompt("altura","altura ingresada");
+                altura_ingresada = int(altura_ingresada);
+            
+                
+                 
+            
+            
         
 
     def btn_mostrar_informe_1_on_click(self):
