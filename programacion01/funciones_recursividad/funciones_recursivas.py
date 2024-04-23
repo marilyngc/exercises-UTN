@@ -1,3 +1,4 @@
+# from .package_input.input import *
 # """
 # 1- Realizar una función recursiva que calcule la suma de los primeros números naturales:
 # """
@@ -41,12 +42,12 @@ print(sumar_digitos(numero))
 """ 4- Realizar una función para calcular el número de Fibonacci de un número ingresado por consola. La función deberá seguir el siguiente prototipo:
 """
 
-def calcular_fibonacci(numero: int):
+def calcular_fibonacci(mensaje: str, minimo:int, maximo:int, reintentos: int):
     if numero < 2:
         return numero
     else:
         return calcular_fibonacci(numero - 1) + calcular_fibonacci(numero - 2);
     
-numero_base = 5
+numero_base = get_int("ingrese su legajo: ", 1000, 2000, 3)# 1000 - 2000mary
 print(calcular_fibonacci(numero_base))
 
