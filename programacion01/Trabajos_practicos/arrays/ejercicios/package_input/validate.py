@@ -9,6 +9,7 @@ def validate_number ( mensaje,numero,minimo,maximo,reintentos) -> float|int|None
         if contador_intentos == reintentos:
             print("se agotaron los intentos");
             return None 
+        
         contador_intentos +=1;
 
 def validate_leght(minimo, maximo, caracteres,usuario,tipo):
