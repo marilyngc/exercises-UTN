@@ -81,7 +81,7 @@ def ordenamiento_danza(numeros): #Algoritmo de burbuja
 
 
 ordenados = ordenamiento_danza(numeros_desordenados)
-#print(ordenados)
+print(ordenados)
 
 import time
 
