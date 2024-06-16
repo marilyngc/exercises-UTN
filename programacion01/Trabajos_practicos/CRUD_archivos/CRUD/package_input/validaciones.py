@@ -65,22 +65,22 @@ def validar_puesto(mensaje:str) -> str:
             exit()  # Sale del programa limpiamente
 
 
-def validar_empleado(mensaje:str,busqueda:str, diccionario:dict):
-    id_ingresado = int(input(mensaje))  
+def validar_empleado(dato:int,busqueda:str, diccionario:dict):
+ 
     for empleado in diccionario:
-        if empleado[busqueda] == id_ingresado:
+        if empleado[busqueda] == dato:
             return empleado
     return None  
 
-def validar_id(id:int,diccionario:dict):
-    for empleado in diccionario:
-        if empleado["id"] == id:
-            return id
+# def validar_id(id:int,diccionario:dict):
+#     for empleado in diccionario:
+#         if empleado["id"] == id:
+#             return id
        
-    return None
+#     return None
    
-def validar_busqueda_dni(diccionario:dict, dni:int):
-    for empleado in diccionario:
-        if empleado["dni"] == dni:
-            return empleado  
-        return f"ERROR: no se encontró el dni {dni} solicitado"
+# def validar_busqueda_dni(diccionario:dict, dni:int):
+#     for empleado in diccionario:
+#         if empleado["dni"] == dni:
+#             return empleado  
+#         return f"ERROR: no se encontró el dni {dni} solicitado"

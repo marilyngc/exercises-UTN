@@ -32,7 +32,7 @@ def cambio_archivo(path_principal:str, path_secundario: str):
         return "Lista guardada"        
     except:
         return "A ocurrido un error en transferir el archivo"   
-    
+        
 def contar_elementos(path:str):
     try:
         pass

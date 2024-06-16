@@ -36,8 +36,8 @@ def agregar_empleado(empleados):
     else:
         return "ERROR: no se puede agregar mas de 20 empleados"   
 
-def buscar_empleado_id(diccionario:dict):
-        empleado_encontrado = validar_empleado("Ingrese su id","id", diccionario)
+def buscar_empleado_id(diccionario:dict, dato:int):
+        empleado_encontrado = validar_empleado(dato,"id", diccionario)
         
         if empleado_encontrado:
             return empleado_encontrado
@@ -121,9 +121,9 @@ def salario_promedio(diccionario:dict):
     promedio = suma_salarios / contador_salario  
     return promedio  
 
-def dni_empleado(diccionario:dict):
+def dni_empleado(diccionario:dict, dato:int):
 
-    dni_validado = validar_empleado("Ingrese el dni a buscar: ","dni", diccionario)
+    dni_validado = validar_empleado(dato,"dni", diccionario)
     
     if dni_validado:
         for clave,valor in dni_validado.items():
