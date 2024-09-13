@@ -35,6 +35,6 @@ public class Persona {
    
     public void calcularIMC(double peso){
         double imc = peso / (altura * altura);
-        System.out.printf("su IMC ES: %.2f ", imc);
+        System.out.printf("su IMC ES: %.2f\n ", imc);
     }
 }
