@@ -1,45 +1,74 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package posnet;
 
+/**
+ *
+ * @author Marilyn
+ */
 public class Posnet {
-    private double montoAAbonar;
-    private int cantidadCuota;
-    private Tarjeta tarjeta;
 
-    public Posnet(double montoAAbonar, int cantidadCuota, Tarjeta tarjeta) {
-        this.montoAAbonar = montoAAbonar;
-        this.cantidadCuota = cantidadCuota;
-        this.tarjeta = tarjeta;
-    }
+    private static final int MAX_CUOTA = 6;
+    private static final int MIN_CUOTA = 1;
+    private static final double PORC_CUOTA = 0.003;
 
-    public void efectuarPago() {
-        double montoTotal = tarjeta.validarMonto(montoAAbonar, cantidadCuota);
-        if (montoTotal > 0) { 
-            double pagoPorMes = this.montoCadaCuota(montoTotal);
-            this.generarTicket(montoTotal, pagoPorMes);
-        } else {
-            System.out.println("Error: Monto total inválido o saldo insuficiente.");
+    public Ticket efectuarPago(Tarjeta tarjeta, double monto, int cuotas) {
+        
+        try{
+          validarDatos(tarjeta, monto, cuotas);  
+          
+          double porcRecargo =  calcularPorcentajeRecargo(cuotas);
+          
+          double montoTotal = monto + monto * porcRecargo;
+          
+          if (checkSaldo(tarjeta,monto)){
+              tarjeta.debitar(monto);
+              return new Ticket(tarjeta.nombreTitular(),montoTotal,cuotas);
+          }
         }
+        catch(Exception ex){
+            System.out.println("No se puede procesar el pago");
+        }
+        return null;
     }
 
-    public double montoCadaCuota(double montoTotal) {
-        double porCuota = montoTotal / this.cantidadCuota;
-        return porCuota;
-
+    private boolean validarDatos(Tarjeta tarjeta, double monto, int cuotas) {
+        return validarTarjeta(tarjeta) && validarMonto(monto) && validarCuotas(cuotas);
     }
 
-    public void generarTicket(double montoTotal, double pagoPorMes) {
-        String nombreCliente = tarjeta.getCliente().getNombre();
-        String apellidoCliente = tarjeta.getCliente().getApellido();
-
-        if (tarjeta != null && !nombreCliente.isEmpty()) {
-         
-            System.out.printf("Nombre y apellido del cliente: %s %s%n", nombreCliente, apellidoCliente);
-            System.out.printf("Monto total a pagar:%.2f%n", montoTotal);
-            System.out.printf("Monto de cada cuota:%.2f%n", pagoPorMes);
-            System.out.println("******************************");
-        } else {
-            System.out.println("Error: Cliente o tarjeta no están disponibles.");
+    private boolean validarTarjeta(Tarjeta tarjeta) {
+        if (tarjeta == null) {
+            throw new NullPointerException("Tarjeta nula");
         }
 
+        return true;
     }
+
+    private boolean validarCuotas(double cuotas) {
+        if (cuotas < MAX_CUOTA || cuotas > MIN_CUOTA) {
+            throw new IllegalArgumentException("Cuotas invalidas");
+        }
+        return true;
+    }
+
+    private boolean validarMonto(double monto) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("Monto invalido");
+
+        }
+        return true;
+    }
+
+    private double calcularPorcentajeRecargo(int cuotas) {
+        double recargo = PORC_CUOTA * (cuotas - 1);
+        return recargo;
+    }
+
+    private boolean checkSaldo(Tarjeta tarjeta, double monto) {
+        return tarjeta.puedoPagar(monto);
+    }
+    
+  
 }

@@ -1,59 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package posnet;
 
+/**
+ *
+ * @author Marilyn
+ */
 public class Tarjeta {
-    private String entidadFinanciera;
-    private int nroTarjeta;
-    private double saldoDisponible;
-    private Persona persona;
+    private  EntidadFinanciera entidadFinanciera;
 
-    public Tarjeta(String entidadFinanciera, int nroTarjeta, double saldoDisponible,
-            String nombre, String apellido, int nroDni, int nroTelefono, String email) {
+    private String numero;
+    private double saldo;
+    private Cliente titular;
+
+    public Tarjeta(EntidadFinanciera entidadFinanciera, String numero, double saldo, Cliente titular) {
         this.entidadFinanciera = entidadFinanciera;
-        this.nroTarjeta = nroTarjeta;
-        this.saldoDisponible = saldoDisponible;
-        this.persona = new Persona(nombre, apellido, nroDni, nroTelefono, email);
 
+        this.numero = numero;
+        this.saldo = saldo;
+        this.titular = titular;
     }
-
-    public String getEntidadFinanciera(){
-        return entidadFinanciera;
-    }
-    public Persona getCliente() {
-        return persona;
-    }
-
-    public int getNumeroTarjeta() {
-        return nroTarjeta;
-    }
-
-    public double getSaldoDisponible() {
-        return saldoDisponible;
-    }
-
-    public double validarMonto(double montoIngresado, int cuota) {
-        if (montoIngresado < saldoDisponible) {
-            double montoFinal = this.calcularCuota(montoIngresado, cuota);
-            return montoFinal;
-        } else {
-            System.out.println("Saldo insuficiente");
-            return 0;
-        }
-
-    }
-
-    public double calcularCuota(double montoIngresado, int cuota) {
-        double recarga = 1;
-        if (cuota > 1) {
-            recarga = ((cuota - 1) * 3) / (double) 100;
-
-        }
-
-        double porcentajeDeRecargo = montoIngresado * recarga;
-        double montoFinal = montoIngresado + porcentajeDeRecargo;
-
-        saldoDisponible -= montoFinal;
-        return montoFinal;
-
-    }
-
+     public boolean puedoPagar(double monto){
+       return saldo >= monto;
+   }
+     
+     public void debitar(double monto){
+         if(puedoPagar(monto)){
+             saldo -= monto;
+         }
+     }
+    
+     public String nombreTitular(){
+         return titular.nombreCompleto();
+     }
 }
